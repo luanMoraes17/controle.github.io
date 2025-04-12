@@ -24,8 +24,6 @@ JavaScript (puro)
 
 
 
-📸 Preview
-(Sugestão: coloca aqui uma imagem ou gif mostrando a interface do sistema rodando. Pode usar uma ferramenta como o LiceCap ou tirar um print legal.)
 
 📈 Futuras melhorias
 Armazenamento de dados no localStorage
