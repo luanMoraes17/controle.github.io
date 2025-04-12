@@ -25,6 +25,7 @@ header {
     position: relative;
 }
 
+/* Logo - mantendo apenas a versão mais moderna */
 .logo {
     font-size: 3em;
     font-weight: 800;
@@ -357,6 +358,7 @@ button:hover {
     border-radius: 15px 15px 0 0;
 }
 
+/* Media Queries consolidadas */
 @media (max-width: 1024px) {
     .charts {
         gap: 20px;
