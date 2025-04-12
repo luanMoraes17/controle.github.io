@@ -200,24 +200,23 @@ class FinanceManager {
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    title: {
-                        display: true,
-                        text: 'Despesas por Categoria'
-                    },
                     legend: {
                         position: 'right',
                         labels: {
-                            generateLabels: function(chart) {
-                                const data = chart.data;
-                                const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
-                                return data.labels.map((label, i) => ({
-                                    text: `${label} - R$ ${data.datasets[0].data[i].toFixed(2)} (${((data.datasets[0].data[i]/total)*100).toFixed(1)}%)`,
-                                    fillStyle: data.datasets[0].backgroundColor[i],
-                                    hidden: isNaN(data.datasets[0].data[i]),
-                                    index: i
-                                }));
+                            boxWidth: 10,
+                            padding: 8,
+                            font: {
+                                size: 11
                             }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Despesas por Categoria',
+                        font: {
+                            size: 13
                         }
                     }
                 }
@@ -225,42 +224,75 @@ class FinanceManager {
         });
     }
 
-    updateBalanceChart() {
-        const monthlyBalance = {};
+    updateBalanceChart() {  // Changed from function declaration to class method
+        const ctx = this.balanceChart.getContext('2d');
         
-        this.transactions.forEach(transaction => {
-            const month = transaction.date.substring(0, 7);
+        // Sort transactions by date
+        const sortedTransactions = this.transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        // Rest of the method remains the same
+        const monthlyData = {};
+        let runningBalance = 0;
+        
+        sortedTransactions.forEach(transaction => {
+            const monthYear = transaction.date.substring(0, 7);
             const amount = transaction.type === 'income' ? transaction.amount : -transaction.amount;
-            monthlyBalance[month] = (monthlyBalance[month] || 0) + amount;
+            runningBalance += amount;
+            monthlyData[monthYear] = runningBalance;
         });
-
-        new Chart(this.balanceChart, {
+    
+        const labels = Object.keys(monthlyData);
+        const data = Object.values(monthlyData);
+    
+        // If there's an existing chart, destroy it
+        if (window.balanceChart instanceof Chart) {
+            window.balanceChart.destroy();
+        }
+    
+        window.balanceChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: Object.keys(monthlyBalance),
+                labels: labels,
                 datasets: [{
                     label: 'Saldo Mensal',
-                    data: Object.values(monthlyBalance),
+                    data: data,
                     borderColor: '#2ecc71',
-                    tension: 0.1,
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    borderWidth: 3,
                     fill: true,
-                    backgroundColor: 'rgba(46, 204, 113, 0.1)'
+                    tension: 0.3,
+                    pointBackgroundColor: '#2ecc71',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    pointHoverBackgroundColor: '#2ecc71',
+                    pointHoverBorderColor: '#fff',
+                    pointHoverBorderWidth: 2,
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    title: {
-                        display: true,
-                        text: 'Evolução do Saldo'
+                    legend: {
+                        display: false
                     }
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true,
+                    x: {
                         ticks: {
-                            callback: function(value) {
-                                return 'R$ ' + value.toFixed(2);
+                            font: {
+                                size: 10
+                            },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 10
                             }
                         }
                     }
