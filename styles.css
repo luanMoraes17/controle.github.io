@@ -453,3 +453,64 @@ footer p {
         font-size: 0.7em;
     }
 }
+
+.transaction-form {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.transaction-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transaction-form input,
+.transaction-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+    border-color: #00b09b;
+    box-shadow: 0 0 0 3px rgba(0, 176, 155, 0.1);
+    outline: none;
+}
+
+.transaction-form button {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #00b09b, #96c93d);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Ajustes específicos para mobile */
+@media (max-width: 480px) {
+    .transaction-form {
+        padding: 15px;
+    }
+
+    .transaction-form input,
+    .transaction-form select,
+    .transaction-form button {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    input[type="date"] {
+        min-height: 48px;
+        -webkit-appearance: none;
+        padding-right: 10px;
+    }
+}
