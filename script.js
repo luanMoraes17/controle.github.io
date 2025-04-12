@@ -1,3 +1,16 @@
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(registration => {
+                console.log('ServiceWorker registered successfully');
+            })
+            .catch(error => {
+                console.log('ServiceWorker registration failed:', error);
+            });
+    });
+}
+
 class FinanceManager {
     constructor() {
         this.transactions = JSON.parse(localStorage.getItem('transactions')) || [];
