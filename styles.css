@@ -30,6 +30,8 @@ header {
     font-size: 3em;
     font-weight: 800;
     background: linear-gradient(45deg, #00b09b, #96c93d);
+    background-clip: text;
+    background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -417,6 +419,7 @@ button:hover {
     font-family: 'Arial Black', sans-serif;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     background: linear-gradient(45deg, #2ecc71, #3498db);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 2px;
@@ -511,7 +514,8 @@ footer p {
     }
 
     input[type="date"] {
-        min-height: 48px;
+        appearance: none;
+        -webkit-appearance: none;
         -webkit-appearance: none;
         padding-right: 10px;
     }
