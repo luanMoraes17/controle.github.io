@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos Pessoais</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Controle de Gastos Pessoais</h1>
+            <div class="balance">
+                <h2>Saldo Total: <span id="totalBalance">R$ 0,00</span></h2>
+            </div>
+        </header>
+
+        <div class="transaction-form">
+            <h3>Nova Transação</h3>
+            <form id="transactionForm">
+                <input type="text" id="description" placeholder="Descrição" required>
+                <input type="number" id="amount" placeholder="Valor" step="0.01" required>
+                <select id="type" required>
+                    <option value="income">Ganho</option>
+                    <option value="expense">Despesa</option>
+                </select>
+                <select id="category" required>
+                    <option value="salary">Salário</option>
+                    <option value="food">Alimentação</option>
+                    <option value="transport">Transporte</option>
+                    <option value="housing">Moradia</option>
+                    <option value="education">Educação</option>
+                    <option value="entertainment">Entretenimento</option>
+                    <option value="others">Outros</option>
+                </select>
+                <input type="date" id="date" required>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+
+        <div class="filters">
+            <h3>Filtros</h3>
+            <select id="categoryFilter">
+                <option value="all">Todas Categorias</option>
+                <option value="salary">Salário</option>
+                <option value="food">Alimentação</option>
+                <option value="transport">Transporte</option>
+                <option value="housing">Moradia</option>
+                <option value="others">Outros</option>
+            </select>
+            <input type="month" id="monthFilter">
+        </div>
+
+        <div class="transactions">
+            <h3>Transações</h3>
+            <ul id="transactionsList"></ul>
+        </div>
+
+        <div class="charts">
+            <div class="chart-container">
+                <canvas id="expensesChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="balanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
