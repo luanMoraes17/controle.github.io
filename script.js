@@ -202,12 +202,12 @@ class FinanceManager {
                 datasets: [{
                     data: Object.values(sortedCategories),
                     backgroundColor: [
-                        '#FF6384',
-                        '#36A2EB',
-                        '#FFCE56',
-                        '#4BC0C0',
-                        '#9966FF',
-                        '#FF9F40'
+                        '#00b09b',  // Verde principal
+                        '#2ecc71',   // Verde secundário
+                        '#3498db',   // Azul
+                        '#9b59b6',   // Roxo
+                        '#e74c3c',   // Vermelho
+                        '#f1c40f'    // Amarelo
                     ]
                 }]
             },
@@ -229,8 +229,10 @@ class FinanceManager {
                         display: true,
                         text: 'Despesas por Categoria',
                         font: {
-                            size: 13
-                        }
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        color: '#2c3e50'
                     }
                 }
             }
@@ -269,8 +271,8 @@ class FinanceManager {
                 datasets: [{
                     label: 'Saldo Mensal',
                     data: data,
-                    borderColor: '#2ecc71',
-                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    borderColor: '#00b09b',
+                    backgroundColor: 'rgba(0, 176, 155, 0.1)',
                     borderWidth: 3,
                     fill: true,
                     tension: 0.3,
