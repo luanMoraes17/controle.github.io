@@ -183,7 +183,8 @@ class FinanceManager {
 
     // Keep only one version of updateExpensesChart (the more detailed one)
     updateExpensesChart() {
-        const expenses = this.transactions.filter(t => t.type === 'expense');
+        const filtered = this.filterTransactions();
+        const expenses = filtered.filter(t => t.type === 'expense');
         const categories = {};
         
         expenses.forEach(expense => {
