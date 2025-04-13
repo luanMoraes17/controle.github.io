@@ -87,7 +87,7 @@ class FinanceManager {
         const filtered = this.filterTransactions();
         this.transactionsList.innerHTML = filtered
             .map(transaction => `
-                <li class="transaction-item ${transaction.type}">
+                <li class="transaction-item ${transaction.type}" data-category="${transaction.category}">
                     <div class="transaction-info">
                         <span class="description">${transaction.description}</span>
                         <span class="category">${transaction.category}</span>

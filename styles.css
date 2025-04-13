@@ -197,6 +197,30 @@ button:hover {
     background: rgba(231, 76, 60, 0.05);
 }
 
+.transaction-item.expense[data-category="Alimentação"] {
+    border-left-color: #00b09b;
+}
+
+.transaction-item.expense[data-category="Transporte"] {
+    border-left-color: #2ecc71;
+}
+
+.transaction-item.expense[data-category="Moradia"] {
+    border-left-color: #3498db;
+}
+
+.transaction-item.expense[data-category="Saúde"] {
+    border-left-color: #9b59b6;
+}
+
+.transaction-item.expense[data-category="Educação"] {
+    border-left-color: #e74c3c;
+}
+
+.transaction-item.expense[data-category="Lazer"] {
+    border-left-color: #f1c40f;
+}
+
 .transaction-info {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
